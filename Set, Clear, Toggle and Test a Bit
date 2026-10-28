@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdint.h>
+
+uint32_t modify_bit(uint32_t value,
+                    unsigned int bit, char op)
+{
+    if(bit >= 32)
+        return value;
+
+    if(op == 'S')
+        return value | (1U << bit);
+
+    if(op == 'C')
+        return value & ~(1U << bit);
+
+    if(op == 'T')
+        return value ^ (1U << bit);
+
+    if(op == 'G')
+        return (value >> bit) & 1U;
+
+    return value;
+}
+
+int main()
+{
+    uint32_t a = 0x08;
+
+    printf("Clear = 0x%X\n",
+           (unsigned int)modify_bit(a, 3, 'C'));
+
+    printf("Set = 0x%X\n",
+           (unsigned int)modify_bit(a, 2, 'S'));
+
+    printf("Toggle = 0x%X\n",
+           (unsigned int)modify_bit(a, 3, 'T'));
+
+    printf("Test = %u",
+           (unsigned int)modify_bit(a, 3, 'G'));
+
+    return 0;
+}
