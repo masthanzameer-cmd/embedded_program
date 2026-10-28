@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main()
+{
+    char s[] = "swiss";
+    int count[256] = {0};
+
+    for(int i = 0; s[i] != '\0'; i++)
+        count[(unsigned char)s[i]]++;
+
+    for(int i = 0; s[i] != '\0'; i++)
+    {
+        if(count[(unsigned char)s[i]] == 1)
+        {
+            printf("%c", s[i]);
+            return 0;
+        }
+    }
+
+    printf("No unique character");
+
+    return 0;
+}
