@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main()
+{
+    int a[] = {3, 0, 1};
+    int n = 3, x = 0;
+
+    for(int i = 0; i <= n; i++)
+        x = x ^ i;
+
+    for(int i = 0; i < n; i++)
+        x = x ^ a[i];
+
+    printf("Missing = %d", x);
+
+    return 0;
+}
