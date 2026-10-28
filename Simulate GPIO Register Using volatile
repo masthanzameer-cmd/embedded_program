@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdint.h>
+
+volatile uint8_t GPIO_REG = 0;
+
+void setPin(int pin)
+{
+    if(pin >= 0 && pin < 8)
+        GPIO_REG |= (1U << pin);
+}
+
+void clearPin(int pin)
+{
+    if(pin >= 0 && pin < 8)
+        GPIO_REG &= ~(1U << pin);
+}
+
+void togglePin(int pin)
+{
+    if(pin >= 0 && pin < 8)
+        GPIO_REG ^= (1U << pin);
+}
+
+int readPin(int pin)
+{
+    if(pin < 0 || pin > 7)
+        return -1;
+
+    return (GPIO_REG >> pin) & 1U;
+}
+
+int main()
+{
+    printf("Initial = 0x%02X\n", GPIO_REG);
+
+    setPin(3);
+    printf("Set = 0x%02X\n", GPIO_REG);
+
+    togglePin(3);
+    printf("Toggle = 0x%02X\n", GPIO_REG);
+
+    setPin(5);
+    printf("Set = 0x%02X\n", GPIO_REG);
+
+    printf("Read = %d\n", readPin(5));
+
+    clearPin(5);
+    printf("Clear = 0x%02X\n", GPIO_REG);
+
+    return 0;
+}
