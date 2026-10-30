@@ -1,0 +1,20 @@
+
+ #include<stdio.h>
+ int main(){
+
+int sensor;
+
+printf("sensor value:");
+scanf("%d", &sensor);
+if(sensor <=19)
+printf("LOW\n");
+else if(sensor<-69)
+printf("NORMAL\n");
+else if(sensor<-89)
+printf("HIGH\n");
+else if(sensor<-100)
+printf("CRITICAL\n");
+else
+printf("ERROR");
+return 0;
+}
