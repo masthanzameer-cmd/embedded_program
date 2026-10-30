@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+struct device
+{
+    char device_name[100], device_status[100];
+    int device_id, device_voltage;
+};
+
+int main()
+{
+    struct device d1 = {"VIVO", "EXELENT", 21, 25};
+
+    printf("device_id:%d\n", d1.device_id);
+    printf("device_name:%s\n", d1.device_name);
+    printf("device_voltage:%d\n", d1.device_voltage);
+    printf("device_status:%s\n", d1.device_status);
+
+    return 0;
+}
